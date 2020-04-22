@@ -589,8 +589,9 @@ namespace PingMaster_3._1
                 is_ping_all = true;
                 toolStripButton2.Enabled = false;
 
-                for (int i = 0; i < groups_num; i++)
-                    ping_completed[i] = false;
+                if (ping_completed[0] && ping_completed[1] && ping_completed[2] && ping_completed[3] && ping_completed[4] && ping_completed[5] && ping_completed[6] && ping_completed[7])
+                    for (int i = 0; i < groups_num; i++)
+                        ping_completed[i] = false;
 
                 ClearGrid(dataGridView1, g_settings[0, 0]);
                 ClearGrid(dataGridView2, g_settings[1, 0]);
@@ -850,12 +851,7 @@ namespace PingMaster_3._1
                 ping_completed[current_group] = true;
 
                 if (ping_completed[0] && ping_completed[1] && ping_completed[2] && ping_completed[3] && ping_completed[4] && ping_completed[5] && ping_completed[6] && ping_completed[7])
-                {
-                    for (int i = 0; i < groups_num; i++)
-                        ping_completed[i] = false;
-
                     toolStripButton2.Enabled = true;
-                }
             }
         }
 
