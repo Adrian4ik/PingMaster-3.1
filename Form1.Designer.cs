@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.Open_iniTSMitem = new System.Windows.Forms.ToolStripMenuItem();
@@ -186,25 +186,25 @@
             // Open_iniTSMitem
             // 
             this.Open_iniTSMitem.Name = "Open_iniTSMitem";
-            this.Open_iniTSMitem.Size = new System.Drawing.Size(180, 22);
+            this.Open_iniTSMitem.Size = new System.Drawing.Size(70, 22);
             this.Open_iniTSMitem.Click += new System.EventHandler(this.Open_iniTSMitem_Click);
             // 
             // Save_iniTSMitem
             // 
             this.Save_iniTSMitem.Name = "Save_iniTSMitem";
-            this.Save_iniTSMitem.Size = new System.Drawing.Size(180, 22);
+            this.Save_iniTSMitem.Size = new System.Drawing.Size(70, 22);
             this.Save_iniTSMitem.Click += new System.EventHandler(this.Save_iniTSMitem_Click);
             // 
             // Open_logTSMitem
             // 
             this.Open_logTSMitem.Name = "Open_logTSMitem";
-            this.Open_logTSMitem.Size = new System.Drawing.Size(180, 22);
+            this.Open_logTSMitem.Size = new System.Drawing.Size(70, 22);
             this.Open_logTSMitem.Click += new System.EventHandler(this.Open_logTSMitem_Click);
             // 
             // Open_clientsTSMitem
             // 
             this.Open_clientsTSMitem.Name = "Open_clientsTSMitem";
-            this.Open_clientsTSMitem.Size = new System.Drawing.Size(180, 22);
+            this.Open_clientsTSMitem.Size = new System.Drawing.Size(70, 22);
             this.Open_clientsTSMitem.Click += new System.EventHandler(this.Open_clientsTSMitem_Click);
             // 
             // toolStripButton2
@@ -1253,10 +1253,11 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(1366, 939);
             this.Name = "Form1";
-            this.Text = "Ping";
+            this.Text = "Ping Master";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.SizeChanged += new System.EventHandler(this.Form_ChangedSize);
