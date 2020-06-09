@@ -531,6 +531,22 @@ namespace PingMaster_3._1
 
         private void CopyElements()
         {
+            groupBox2.Location = new Point(groupBox1.Location.X, groupBox1.Location.Y);
+            groupBox3.Location = new Point(groupBox1.Location.X, groupBox1.Location.Y);
+            groupBox4.Location = new Point(groupBox1.Location.X, groupBox1.Location.Y);
+            groupBox5.Location = new Point(groupBox1.Location.X, groupBox1.Location.Y);
+            groupBox6.Location = new Point(groupBox1.Location.X, groupBox1.Location.Y);
+            groupBox7.Location = new Point(groupBox1.Location.X, groupBox1.Location.Y);
+            groupBox8.Location = new Point(groupBox1.Location.X, groupBox1.Location.Y);
+
+            groupBox2.Size = new Size(groupBox1.Width, groupBox1.Height);
+            groupBox3.Size = new Size(groupBox1.Width, groupBox1.Height);
+            groupBox4.Size = new Size(groupBox1.Width, groupBox1.Height);
+            groupBox5.Size = new Size(groupBox1.Width, groupBox1.Height);
+            groupBox6.Size = new Size(groupBox1.Width, groupBox1.Height);
+            groupBox7.Size = new Size(groupBox1.Width, groupBox1.Height);
+            groupBox8.Size = new Size(groupBox1.Width, groupBox1.Height);
+
             checkBox2.Location = new Point(checkBox1.Location.X, checkBox1.Location.Y);
             checkBox3.Location = new Point(checkBox1.Location.X, checkBox1.Location.Y);
             checkBox4.Location = new Point(checkBox1.Location.X, checkBox1.Location.Y);
@@ -562,22 +578,6 @@ namespace PingMaster_3._1
             dataGridView6.Location = new Point(dataGridView1.Location.X, dataGridView1.Location.Y);
             dataGridView7.Location = new Point(dataGridView1.Location.X, dataGridView1.Location.Y);
             dataGridView8.Location = new Point(dataGridView1.Location.X, dataGridView1.Location.Y);
-
-            groupBox2.Location = new Point(groupBox1.Location.X, groupBox1.Location.Y);
-            groupBox3.Location = new Point(groupBox1.Location.X, groupBox1.Location.Y);
-            groupBox4.Location = new Point(groupBox1.Location.X, groupBox1.Location.Y);
-            groupBox5.Location = new Point(groupBox1.Location.X, groupBox1.Location.Y);
-            groupBox6.Location = new Point(groupBox1.Location.X, groupBox1.Location.Y);
-            groupBox7.Location = new Point(groupBox1.Location.X, groupBox1.Location.Y);
-            groupBox8.Location = new Point(groupBox1.Location.X, groupBox1.Location.Y);
-
-            groupBox2.Size = new Size(groupBox1.Width, groupBox1.Height);
-            groupBox3.Size = new Size(groupBox1.Width, groupBox1.Height);
-            groupBox4.Size = new Size(groupBox1.Width, groupBox1.Height);
-            groupBox5.Size = new Size(groupBox1.Width, groupBox1.Height);
-            groupBox6.Size = new Size(groupBox1.Width, groupBox1.Height);
-            groupBox7.Size = new Size(groupBox1.Width, groupBox1.Height);
-            groupBox8.Size = new Size(groupBox1.Width, groupBox1.Height);
         }
 
         private void PingAll()
@@ -947,7 +947,7 @@ namespace PingMaster_3._1
             groupBox3.Size = new Size(groupBox1.Size.Width, groupBox1.Size.Height);
             groupBox4.Size = new Size(groupBox1.Size.Width, groupBox1.Size.Height);
 
-            groupBox1.Location = new Point(10, toolStrip1.Size.Height);
+            //groupBox1.Location = new Point(10, toolStrip1.Size.Height + 35);
             groupBox2.Location = new Point(groupBox1.Width + 20, groupBox2.Location.Y);
             groupBox3.Location = new Point(groupBox1.Location.X, groupBox1.Height + toolStrip1.Size.Height + 5);
             groupBox4.Location = new Point(groupBox1.Width + 20, groupBox1.Height + toolStrip1.Size.Height + 5);
