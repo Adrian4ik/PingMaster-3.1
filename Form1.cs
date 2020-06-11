@@ -77,7 +77,7 @@ namespace PingMaster_3._1
 
         private readonly string[] StandartConfigList = new string[]
             { "Language: rus", "Autoping all: yes", "",
-            "Group 1 name: Сетевое коммутационное оборудование", "Group 2 name: Сетевые абоненты АС МКС", "Group 3 name: Сетевые абоненты РС МКС", "Group 4 name: Служебные системы РС МКС", "",
+            "Group 1 name: 1. Сетевое коммутационное оборудование", "Group 2 name: 2. Сетевые абоненты АС МКС", "Group 3 name: 3. Сетевые абоненты РС МКС", "Group 4 name: 4. Служебные системы РС МКС", "",
             "Group 1 autoping: no", "Group 1 show ip: no", "Group 1 show response time: yes", "Group 1 autoping timer (min): 1", "Group 1 timeout (sec): 3", "Group 1 packets count: 1", "",
             "Group 2 autoping: no", "Group 2 show ip: no", "Group 2 show response time: yes", "Group 2 autoping timer (min): 1", "Group 2 timeout (sec): 3", "Group 2 packets count: 1", "",
             "Group 3 autoping: no", "Group 3 show ip: no", "Group 3 show response time: yes", "Group 3 autoping timer (min): 1", "Group 3 timeout (sec): 3", "Group 3 packets count: 1", "",
@@ -411,7 +411,7 @@ namespace PingMaster_3._1
                 Save_iniTSMitem.Text = "Save .INI file";
                 Open_logTSMitem.Text = "Open log file";
                 Open_clientsTSMitem.Text = "Open clients list";
-                toolStripButton2.Text = "Ping all";
+                button0.Text = "Ping all";
                 toolStripButton3.Text = "Tracking";
                 toolStripButton4.Text = "Settings";
                 LanguageTSMitem.Text = "Language";
@@ -451,7 +451,7 @@ namespace PingMaster_3._1
                 Save_iniTSMitem.Text = "Сохранить .INI файл";
                 Open_logTSMitem.Text = "Открыть лог файл";
                 Open_clientsTSMitem.Text = "Открыть список клиентов";
-                toolStripButton2.Text = "Пинг всех";
+                button0.Text = "Опрос всех абонентов";
                 toolStripButton3.Text = "Слежение";
                 toolStripButton4.Text = "Настройки";
                 LanguageTSMitem.Text = "Язык";
@@ -465,20 +465,20 @@ namespace PingMaster_3._1
                 Column1d.HeaderText = "Время";
                 Column1e.HeaderText = "Статус";
 
-                checkBox1.Text = "Автопинг 1 группы";
-                checkBox2.Text = "Автопинг 2 группы";
-                checkBox3.Text = "Автопинг 3 группы";
-                checkBox4.Text = "Автопинг 4 группы";
+                checkBox1.Text = "Автоматический опрос 1 группы";
+                checkBox2.Text = "Автоматический опрос 2 группы";
+                checkBox3.Text = "Автоматический опрос 3 группы";
+                checkBox4.Text = "Автоматический опрос 4 группы";
 
                 button1.Text = "Настройки";
                 button2.Text = "Настройки";
                 button3.Text = "Настройки";
                 button4.Text = "Настройки";
 
-                button11.Text = "Пинг 1 группы";
-                button12.Text = "Пинг 2 группы";
-                button13.Text = "Пинг 3 группы";
-                button14.Text = "Пинг 4 группы";
+                button11.Text = "Опрос 1 группы";
+                button12.Text = "Опрос 2 группы";
+                button13.Text = "Опрос 3 группы";
+                button14.Text = "Опрос 4 группы";
 
                 pinging = "Опрос...";
                 check_connection = "Нет подключения к сети" + Environment.NewLine + "Проверьте подключение сетевого кабеля или настройки сети/фаерволла";
@@ -587,7 +587,7 @@ namespace PingMaster_3._1
             if (NetworkInterface.GetIsNetworkAvailable())
             {
                 is_ping_all = true;
-                toolStripButton2.Enabled = false;
+                button0.Enabled = false;
 
                 if (ping_completed[0] && ping_completed[1] && ping_completed[2] && ping_completed[3] && ping_completed[4] && ping_completed[5] && ping_completed[6] && ping_completed[7])
                     for (int i = 0; i < groups_num; i++)
@@ -636,7 +636,7 @@ namespace PingMaster_3._1
             }
             else
             {
-                toolStripButton2.Enabled = true;
+                button0.Enabled = true;
                 MessageBox.Show(check_connection);
             }
 
@@ -698,7 +698,7 @@ namespace PingMaster_3._1
                     }
                     else
                     {
-                        toolStripButton2.Enabled = true;
+                        button0.Enabled = true;
                         MessageBox.Show("Список клиентов данной группы пуст");
                     }
                 }
@@ -736,7 +736,7 @@ namespace PingMaster_3._1
                     for (int i = 0; i < groups_num; i++)
                         ping_completed[i] = false;
 
-                    toolStripButton2.Enabled = true;
+                    button0.Enabled = true;
                     MessageBox.Show(check_connection);
                 }
                 else
@@ -744,7 +744,7 @@ namespace PingMaster_3._1
             }
             else
             {
-                //toolStripButton2.Enabled = true;
+                //button0.Enabled = true;
                 CheckLog();
             }
         }
@@ -851,7 +851,7 @@ namespace PingMaster_3._1
                 ping_completed[current_group] = true;
 
                 if (ping_completed[0] && ping_completed[1] && ping_completed[2] && ping_completed[3] && ping_completed[4] && ping_completed[5] && ping_completed[6] && ping_completed[7])
-                    toolStripButton2.Enabled = true;
+                    button0.Enabled = true;
             }
         }
 
@@ -868,7 +868,7 @@ namespace PingMaster_3._1
                 for (int i = 0; i < 8; i++)
                     g_settings[i, 1] = 0;
 
-                toolStripButton2.Enabled = false;
+                button0.Enabled = false;
                 ping_completed[currrent_group - 1] = false;
 
                 ClearGrid(grid, count);
@@ -877,7 +877,7 @@ namespace PingMaster_3._1
             else
             {
                 if (!checkBox1.Checked && !checkBox2.Checked && !checkBox3.Checked && !checkBox4.Checked && !checkBox5.Checked && !checkBox6.Checked && !checkBox7.Checked && !checkBox8.Checked)
-                    toolStripButton2.Enabled = true;
+                    button0.Enabled = true;
             }
         }
 
@@ -942,17 +942,17 @@ namespace PingMaster_3._1
         // ------------------------
         private void ResizeStyle4()
         {
-            groupBox1.Size = new Size((ClientSize.Width - 30) / 2, (ClientSize.Height - 60) / 2);
+            groupBox1.Size = new Size((ClientSize.Width - 30) / 2, (ClientSize.Height - 96) / 2);
             groupBox2.Size = new Size(groupBox1.Size.Width, groupBox1.Size.Height);
             groupBox3.Size = new Size(groupBox1.Size.Width, groupBox1.Size.Height);
             groupBox4.Size = new Size(groupBox1.Size.Width, groupBox1.Size.Height);
 
             //groupBox1.Location = new Point(10, toolStrip1.Size.Height + 35);
-            groupBox2.Location = new Point(groupBox1.Width + 20, groupBox2.Location.Y);
-            groupBox3.Location = new Point(groupBox1.Location.X, groupBox1.Height + toolStrip1.Size.Height + 5);
-            groupBox4.Location = new Point(groupBox1.Width + 20, groupBox1.Height + toolStrip1.Size.Height + 5);
+            groupBox2.Location = new Point(groupBox1.Width + 20, groupBox1.Location.Y);
+            groupBox3.Location = new Point(groupBox1.Location.X, groupBox1.Height + toolStrip1.Size.Height + 60);
+            groupBox4.Location = new Point(groupBox1.Width + 20, groupBox1.Height + toolStrip1.Size.Height + 60);
 
-            dataGridView1.Size = new Size(groupBox1.Size.Width - 10, groupBox1.Size.Height - 90);
+            dataGridView1.Size = new Size(groupBox1.Size.Width - 10, groupBox1.Size.Height - 80);
             dataGridView2.Size = new Size(dataGridView1.Size.Width, dataGridView1.Size.Height);
             dataGridView3.Size = new Size(dataGridView1.Size.Width, dataGridView1.Size.Height);
             dataGridView4.Size = new Size(dataGridView1.Size.Width, dataGridView1.Size.Height);
@@ -962,10 +962,10 @@ namespace PingMaster_3._1
             //checkBox3.Location = new Point(groupBox3.Size.Width - 125, 20);
             //checkBox4.Location = new Point(groupBox4.Size.Width - 125, 20);
 
-            button11.Location = new Point(groupBox1.Size.Width - 155, button11.Location.Y);
-            button12.Location = new Point(button11.Location.X, button11.Location.Y);
-            button13.Location = new Point(button11.Location.X, button11.Location.Y);
-            button14.Location = new Point(button11.Location.X, button11.Location.Y);
+            button1.Location = new Point(groupBox1.Size.Width - 105, button1.Location.Y);
+            button2.Location = new Point(button1.Location.X, button1.Location.Y);
+            button3.Location = new Point(button1.Location.X, button1.Location.Y);
+            button4.Location = new Point(button1.Location.X, button1.Location.Y);
 
             Column1e.Width = dataGridView1.Width - Column1a.Width - 20;
             Column2e.Width = Column1e.Width;
@@ -1056,20 +1056,24 @@ namespace PingMaster_3._1
             }
         }
 
-        private void ShowTracking(DataGridView grid)
+        private void ShowTracking(DataGridView grid, int group)
         {
             int selected_row = grid.SelectedCells[0].RowIndex;
-            string s_name = grid[0, selected_row].Value.ToString();
-            //string s_dns = grid[1, selected_row].Value.ToString();
-            string s_ip = grid[2, selected_row].Value.ToString();
 
-            if (!is_tracking)
+            if (selected_row < g_settings[group, 0])
             {
-                tracking = new Tracking(is_english, s_name, s_ip);
-                tracking.FormClosed += new FormClosedEventHandler(Tracking_Closed);
-                toolStripButton3.Enabled = false;
-                is_tracking = true;
-                tracking.Show();
+                string s_name = grid[0, selected_row].Value.ToString();
+                //string s_dns = grid[1, selected_row].Value.ToString();
+                string s_ip = grid[2, selected_row].Value.ToString();
+
+                if (!is_tracking)
+                {
+                    tracking = new Tracking(is_english, s_name, s_ip);
+                    tracking.FormClosed += new FormClosedEventHandler(Tracking_Closed);
+                    toolStripButton3.Enabled = false;
+                    is_tracking = true;
+                    tracking.Show();
+                }
             }
         }
 
@@ -1198,7 +1202,7 @@ namespace PingMaster_3._1
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            toolStripButton2.Enabled = false;
+            button0.Enabled = false;
             ping_completed[0] = false;
 
             ClearGrid(dataGridView1, g_settings[0, 0]);
@@ -1207,7 +1211,7 @@ namespace PingMaster_3._1
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            toolStripButton2.Enabled = false;
+            button0.Enabled = false;
             ping_completed[1] = false;
 
             ClearGrid(dataGridView2, g_settings[1, 0]);
@@ -1216,7 +1220,7 @@ namespace PingMaster_3._1
 
         private void timer3_Tick(object sender, EventArgs e)
         {
-            toolStripButton2.Enabled = false;
+            button0.Enabled = false;
             ping_completed[2] = false;
 
             ClearGrid(dataGridView3, g_settings[2, 0]);
@@ -1225,7 +1229,7 @@ namespace PingMaster_3._1
 
         private void timer4_Tick(object sender, EventArgs e)
         {
-            toolStripButton2.Enabled = false;
+            button0.Enabled = false;
             ping_completed[3] = false;
 
             ClearGrid(dataGridView4, g_settings[3, 0]);
@@ -1234,7 +1238,7 @@ namespace PingMaster_3._1
 
         private void timer5_Tick(object sender, EventArgs e)
         {
-            toolStripButton2.Enabled = false;
+            button0.Enabled = false;
             ping_completed[4] = false;
 
             ClearGrid(dataGridView5, g_settings[4, 0]);
@@ -1243,7 +1247,7 @@ namespace PingMaster_3._1
 
         private void timer6_Tick(object sender, EventArgs e)
         {
-            toolStripButton2.Enabled = false;
+            button0.Enabled = false;
             ping_completed[5] = false;
 
             ClearGrid(dataGridView6, g_settings[5, 0]);
@@ -1252,7 +1256,7 @@ namespace PingMaster_3._1
 
         private void timer7_Tick(object sender, EventArgs e)
         {
-            toolStripButton2.Enabled = false;
+            button0.Enabled = false;
             ping_completed[6] = false;
 
             ClearGrid(dataGridView7, g_settings[6, 0]);
@@ -1261,7 +1265,7 @@ namespace PingMaster_3._1
 
         private void timer8_Tick(object sender, EventArgs e)
         {
-            toolStripButton2.Enabled = false;
+            button0.Enabled = false;
             ping_completed[7] = false;
 
             ClearGrid(dataGridView8, g_settings[7, 0]);
@@ -1353,7 +1357,7 @@ namespace PingMaster_3._1
             if (Timer1.Enabled)
                 Timer1.Stop();
 
-            toolStripButton2.Enabled = false;
+            button0.Enabled = false;
             ping_completed[0] = false;
 
             ClearGrid(dataGridView1, g_settings[0, 0]);
@@ -1365,7 +1369,7 @@ namespace PingMaster_3._1
             if (Timer2.Enabled)
                 Timer2.Stop();
 
-            toolStripButton2.Enabled = false;
+            button0.Enabled = false;
             ping_completed[1] = false;
 
             ClearGrid(dataGridView2, g_settings[1, 0]);
@@ -1377,7 +1381,7 @@ namespace PingMaster_3._1
             if (Timer3.Enabled)
                 Timer3.Stop();
 
-            toolStripButton2.Enabled = false;
+            button0.Enabled = false;
             ping_completed[2] = false;
 
             ClearGrid(dataGridView3, g_settings[2, 0]);
@@ -1389,7 +1393,7 @@ namespace PingMaster_3._1
             if (Timer4.Enabled)
                 Timer4.Stop();
 
-            toolStripButton2.Enabled = false;
+            button0.Enabled = false;
             ping_completed[3] = false;
 
             ClearGrid(dataGridView4, g_settings[3, 0]);
@@ -1401,7 +1405,7 @@ namespace PingMaster_3._1
             if (Timer5.Enabled)
                 Timer5.Stop();
 
-            toolStripButton2.Enabled = false;
+            button0.Enabled = false;
             ping_completed[4] = false;
 
             ClearGrid(dataGridView5, g_settings[4, 0]);
@@ -1413,7 +1417,7 @@ namespace PingMaster_3._1
             if (Timer6.Enabled)
                 Timer6.Stop();
 
-            toolStripButton2.Enabled = false;
+            button0.Enabled = false;
             ping_completed[5] = false;
 
             ClearGrid(dataGridView6, g_settings[5, 0]);
@@ -1425,11 +1429,16 @@ namespace PingMaster_3._1
             if (Timer7.Enabled)
                 Timer7.Stop();
 
-            toolStripButton2.Enabled = false;
+            button0.Enabled = false;
             ping_completed[6] = false;
 
             ClearGrid(dataGridView7, g_settings[6, 0]);
             SortPing(7);
+        }
+
+        private void button0_Click(object sender, EventArgs e)
+        {
+            PingAll();
         }
 
         private void button18_Click(object sender, EventArgs e)
@@ -1437,16 +1446,11 @@ namespace PingMaster_3._1
             if (Timer8.Enabled)
                 Timer8.Stop();
 
-            toolStripButton2.Enabled = false;
+            button0.Enabled = false;
             ping_completed[7] = false;
 
             ClearGrid(dataGridView8, g_settings[7, 0]);
             SortPing(8);
-        }
-
-        private void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            ShowTracking(dataGridView1);
         }
 
         private void Save_iniTSMitem_Click(object sender, EventArgs e)
@@ -1454,39 +1458,44 @@ namespace PingMaster_3._1
             SaveINI();
         }
 
+        private void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            ShowTracking(dataGridView1, 0);
+        }
+
         private void dataGridView2_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            ShowTracking(dataGridView2);
+            ShowTracking(dataGridView2, 1);
         }
 
         private void dataGridView3_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            ShowTracking(dataGridView3);
+            ShowTracking(dataGridView3, 2);
         }
 
         private void dataGridView4_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            ShowTracking(dataGridView4);
+            ShowTracking(dataGridView4, 3);
         }
 
         private void dataGridView5_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            ShowTracking(dataGridView5);
+            ShowTracking(dataGridView5, 4);
         }
 
         private void dataGridView6_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            ShowTracking(dataGridView6);
+            ShowTracking(dataGridView6, 5);
         }
 
         private void dataGridView7_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            ShowTracking(dataGridView7);
+            ShowTracking(dataGridView7, 6);
         }
 
         private void dataGridView8_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            ShowTracking(dataGridView8);
+            ShowTracking(dataGridView8, 7);
         }
 
         private void Open_iniTSMitem_Click(object sender, EventArgs e)
@@ -1502,11 +1511,6 @@ namespace PingMaster_3._1
         private void Open_clientsTSMitem_Click(object sender, EventArgs e)
         {
             Process.Start("C:\\Windows\\System32\\notepad.exe", "Clients.txt");
-        }
-
-        private void toolStripButton2_Click(object sender, EventArgs e)
-        {
-            PingAll();
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
