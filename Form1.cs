@@ -78,14 +78,14 @@ namespace PingMaster_3._1
         private readonly string[] StandartConfigList = new string[]
             { "Language: rus", "Autoping all: yes", "",
             "Group 1 name: 1. Сетевое коммутационное оборудование", "Group 2 name: 2. Сетевые абоненты АС МКС", "Group 3 name: 3. Сетевые абоненты РС МКС", "Group 4 name: 4. Служебные системы РС МКС", "",
-            "Group 1 autoping: no", "Group 1 show ip: no", "Group 1 show response time: yes", "Group 1 autoping timer (min): 1", "Group 1 timeout (sec): 3", "Group 1 packets count: 1", "",
-            "Group 2 autoping: no", "Group 2 show ip: no", "Group 2 show response time: yes", "Group 2 autoping timer (min): 1", "Group 2 timeout (sec): 3", "Group 2 packets count: 1", "",
-            "Group 3 autoping: no", "Group 3 show ip: no", "Group 3 show response time: yes", "Group 3 autoping timer (min): 1", "Group 3 timeout (sec): 3", "Group 3 packets count: 1", "",
-            "Group 4 autoping: no", "Group 4 show ip: no", "Group 4 show response time: yes", "Group 4 autoping timer (min): 1", "Group 4 timeout (sec): 3", "Group 4 packets count: 1", "",
-            "Group 5 autoping: no", "Group 5 show ip: no", "Group 5 show response time: yes", "Group 5 autoping timer (min): 1", "Group 5 timeout (sec): 3", "Group 5 packets count: 1", "",
-            "Group 6 autoping: no", "Group 6 show ip: no", "Group 6 show response time: yes", "Group 6 autoping timer (min): 1", "Group 6 timeout (sec): 3", "Group 6 packets count: 1", "",
-            "Group 7 autoping: no", "Group 7 show ip: no", "Group 7 show response time: yes", "Group 7 autoping timer (min): 1", "Group 7 timeout (sec): 3", "Group 7 packets count: 1", "",
-            "Group 8 autoping: no", "Group 8 show ip: no", "Group 8 show response time: yes", "Group 8 autoping timer (min): 1", "Group 8 timeout (sec): 3", "Group 8 packets count: 1" };
+            "Group 1 autoping: no", "Group 1 show ip: no", "Group 1 show response time: no", "Group 1 autoping timer (min): 1", "Group 1 timeout (sec): 3", "Group 1 packets count: 1", "",
+            "Group 2 autoping: no", "Group 2 show ip: no", "Group 2 show response time: no", "Group 2 autoping timer (min): 1", "Group 2 timeout (sec): 3", "Group 2 packets count: 1", "",
+            "Group 3 autoping: no", "Group 3 show ip: no", "Group 3 show response time: no", "Group 3 autoping timer (min): 1", "Group 3 timeout (sec): 3", "Group 3 packets count: 1", "",
+            "Group 4 autoping: no", "Group 4 show ip: no", "Group 4 show response time: no", "Group 4 autoping timer (min): 1", "Group 4 timeout (sec): 3", "Group 4 packets count: 1", "",
+            "Group 5 autoping: no", "Group 5 show ip: no", "Group 5 show response time: no", "Group 5 autoping timer (min): 1", "Group 5 timeout (sec): 3", "Group 5 packets count: 1", "",
+            "Group 6 autoping: no", "Group 6 show ip: no", "Group 6 show response time: no", "Group 6 autoping timer (min): 1", "Group 6 timeout (sec): 3", "Group 6 packets count: 1", "",
+            "Group 7 autoping: no", "Group 7 show ip: no", "Group 7 show response time: no", "Group 7 autoping timer (min): 1", "Group 7 timeout (sec): 3", "Group 7 packets count: 1", "",
+            "Group 8 autoping: no", "Group 8 show ip: no", "Group 8 show response time: no", "Group 8 autoping timer (min): 1", "Group 8 timeout (sec): 3", "Group 8 packets count: 1" };
 
         private readonly string[] StandartClientList = new string[]
             { "Loopback/127.0.0.1", "БРИ-1/10.1.1.254", "БРИ-2/10.1.2.254", "БРИ-3/192.168.60.254", "SM BelAir WAP/192.168.68.73", "АСП/10.1.2.250", "",
@@ -637,6 +637,7 @@ namespace PingMaster_3._1
             else
             {
                 button0.Enabled = true;
+                File.AppendAllText("Logs//" + DateTime.Now.Date.ToString().Substring(0, 10) + ".log", "Соединение отсутствует" + Environment.NewLine);
                 MessageBox.Show(check_connection);
             }
 
@@ -808,28 +809,37 @@ namespace PingMaster_3._1
 
             if (reply != null)
             {
-                grid[4, g_settings[current_group, 1]].Value = reply.Status;
-
                 if (reply.Status == IPStatus.Success)
                 {
-                    if (reply.RoundtripTime <= 0)
+                    /*if (reply.RoundtripTime <= 0)
                         grid[4, g_settings[current_group, 1]].Value += " " + "<1 ms";
                     else
-                        grid[4, g_settings[current_group, 1]].Value += " " + reply.RoundtripTime.ToString() + " ms";
+                        grid[4, g_settings[current_group, 1]].Value += " " + reply.RoundtripTime.ToString() + " ms";*/
 
-                    grid[4, g_settings[current_group, 1]].Style.BackColor = Color.GreenYellow;
-                    grid[4, g_settings[current_group, 1]].Style.SelectionBackColor = Color.DarkGreen;
+                    grid[4, g_settings[current_group, 1]].Style.BackColor = Color.FromArgb(87, 255, 87);
+                    grid[4, g_settings[current_group, 1]].Style.SelectionBackColor = Color.FromArgb(31, 158, 31);
+
+                    grid[4, g_settings[current_group, 1]].Value = "Отвечает";
                 }
                 else
                 {
                     grid[4, g_settings[current_group, 1]].Style.BackColor = Color.FromArgb(255, 63, 63);
                     grid[4, g_settings[current_group, 1]].Style.SelectionBackColor = Color.DarkRed;
+
+                    grid[4, g_settings[current_group, 1]].Value = "Не отвечает";
+
+                    /*switch(reply.Status)
+                    {
+                        case IPStatus.DestinationHostUnreachable:
+                            grid[4, g_settings[current_group, 1]].Value = reply.Status;
+                            break;
+                    }*/
                 }
             }
             else
             {
                 grid[4, g_settings[current_group, 1]].Value = "Пакет утерян";
-                grid[4, g_settings[current_group, 1]].Style.BackColor = Color.FromArgb(255, 63, 63);
+                grid[4, g_settings[current_group, 1]].Style.BackColor = Color.FromArgb(255, 87, 87);
                 grid[4, g_settings[current_group, 1]].Style.SelectionBackColor = Color.DarkRed;
             }
 
@@ -942,6 +952,8 @@ namespace PingMaster_3._1
         // ------------------------
         private void ResizeStyle4()
         {
+            label2.Text = "W: " + Size.Width + ", H: " + Size.Height;
+
             groupBox1.Size = new Size((ClientSize.Width - 30) / 2, (ClientSize.Height - 96) / 2);
             groupBox2.Size = new Size(groupBox1.Size.Width, groupBox1.Size.Height);
             groupBox3.Size = new Size(groupBox1.Size.Width, groupBox1.Size.Height);
@@ -952,7 +964,7 @@ namespace PingMaster_3._1
             groupBox3.Location = new Point(groupBox1.Location.X, groupBox1.Height + toolStrip1.Size.Height + 60);
             groupBox4.Location = new Point(groupBox1.Width + 20, groupBox1.Height + toolStrip1.Size.Height + 60);
 
-            dataGridView1.Size = new Size(groupBox1.Size.Width - 10, groupBox1.Size.Height - 80);
+            dataGridView1.Size = new Size(groupBox1.Size.Width - 10, groupBox1.Size.Height - 85);
             dataGridView2.Size = new Size(dataGridView1.Size.Width, dataGridView1.Size.Height);
             dataGridView3.Size = new Size(dataGridView1.Size.Width, dataGridView1.Size.Height);
             dataGridView4.Size = new Size(dataGridView1.Size.Width, dataGridView1.Size.Height);
@@ -1194,7 +1206,7 @@ namespace PingMaster_3._1
         {
             PreProcessing();
 
-            Size = new Size(916, 739);
+            //Size = new Size(916, 739);
             SortStyle();
 
             //Application.DoEvents();
